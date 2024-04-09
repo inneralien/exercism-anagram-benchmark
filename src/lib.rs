@@ -16,6 +16,11 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&'a str]) -> HashSet<&'
 
     let mut anagrams: HashSet<&str> = HashSet::new();
 
+    // Benchmark
+    // Anagram 6 words         time:   [835.56 ns 837.52 ns 839.40 ns]
+    // Found 4 outliers among 100 measurements (4.00%)
+    //   3 (3.00%) high mild
+    //   1 (1.00%) high severe
     for &anagram in possible_anagrams {
         // Reject words that are the same as the input word, but after
         // ignoring case
@@ -35,6 +40,8 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&'a str]) -> HashSet<&'
             anagrams.insert(anagram);
         }
     }
+
+    // Refactor the above to use filters to see if benchmark numbers improve.
 
     // println!("anagrams: {anagrams:?}");
     anagrams

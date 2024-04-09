@@ -11,7 +11,7 @@ fn criterion_benchmark(c: &mut Criterion) {
         "largely",
         "leading",
     ];
-    c.bench_function("fib 20", |b| {
+    c.bench_function("Anagram 6 words", |b| {
         b.iter(|| anagrams_for(black_box(word), black_box(inputs)))
     });
 }
